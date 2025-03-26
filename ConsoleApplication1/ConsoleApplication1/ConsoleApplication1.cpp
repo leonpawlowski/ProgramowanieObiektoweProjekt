@@ -1,50 +1,8 @@
 ﻿#include <iostream>
 
-/*
-int konwersjaSystemowLiczbowychOd1Do9(int podstawa, int liczba) {
-    int licznik = 1, wynik = 0;
-    while (liczba > 0) {
-        wynik += licznik * (liczba % podstawa);
-        licznik *= 10;
-        liczba = liczba / podstawa;
-    }
-    return wynik;
-}
-
-std::string konwersjaSystemowLiczbowychOd11Do16(int podstawa, int liczba) {
-    std::string wynik = "";
-    while (liczba > 0) {
-        int resztaZDzielenia = liczba % podstawa;
-        if (resztaZDzielenia > 9) {
-            wynik=static_cast<char>('A'+resztaZDzielenia-10)+wynik;
-        }
-        else {
-            wynik = static_cast<char>('0' + resztaZDzielenia) + wynik;
-        }
-        liczba = liczba / podstawa;
-    }
-    return wynik;
-}
-
-void konwersjaSystemowLiczbowych() {
-    int podstawa, liczba;
-    std::cout << "podaj liczbe:";
-    std::cin >> liczba;
-    std::cout << "podaj podstawe systemu liczbowego od 1 do 16: ";
-    std::cin >> podstawa;
-    if (podstawa < 10 && podstawa>0)
-        std::cout << "wynik: " << konwersjaSystemowLiczbowychOd1Do9(podstawa, liczba) << '\n';
-    else if (podstawa <= 16 && podstawa > 10)
-        std::cout << "wynik: " << konwersjaSystemowLiczbowychOd11Do16(podstawa, liczba) << '\n';
-    else
-        std::cout << "wynik: " << liczba << '\n';
-    mem = liczba;
-    czyWPamieciZnajdujeSieWartosc = true;
-}
-*/
-
 class Kalkulator {
     bool czyWPamieciZnajdujeSieWartosc = false;
+    bool operacjaNaPamieci = false;
     double mem;
 public:
     bool czyZakonczycProgram = false;
@@ -68,18 +26,40 @@ public:
         std::cin >> wybor;
         double a, b;
         if (wybor < 6 && wybor>0) {
+            
             std::cout << "podaj pierwsza liczbe: ";
             std::cin >> a;
             std::cout << "podaj druga liczbe: ";
             std::cin >> b;
         }
         else if (wybor == 8) {
-            std::cout << "wybierz operacje (1-6): ";
-            std::cin >> wybor;
-            std::cout << "liczba w pamieci: " << mem<<'\n';
-            a = mem;
-            std::cout << "podaj druga liczbe: ";
-            std::cin >> b;
+            if (czyWPamieciZnajdujeSieWartosc) {
+                std::cout << "wybierz operacje (1-6): ";
+                std::cin >> wybor;
+                if(wybor < 6 && wybor>0){
+                    std::cout << "liczba w pamieci: " << mem<<'\n';
+                    a = mem;
+                    std::cout << "podaj druga liczbe: ";
+                    std::cin >> b;
+                }
+                else if (wybor == 6)
+                    operacjaNaPamieci = true;
+            }
+            else if (!czyWPamieciZnajdujeSieWartosc) {
+                std::cout << "wybierz operacje (1-6): ";
+                std::cin >> wybor;
+                std::cout << "w pamieci nie ma zadnej liczby\n";
+                std::cout << "podaj liczbe do pamieci: ";
+                std::cin >> mem;
+                if (wybor < 6 && wybor>0) {
+                    a = mem;
+                    std::cout << "podaj druga liczbe: ";
+                    std::cin >> b;
+                }
+                else if (wybor == 6)
+                    operacjaNaPamieci = true;
+                czyWPamieciZnajdujeSieWartosc = true;
+            }
         }
         switch (wybor) {
         case 0:
@@ -119,7 +99,7 @@ public:
                 std::cout << "DZIELENIE PRZEZ ZERO!!!" << '\n';
             break;
         case 6:
-            //konwersjaSystemowLiczbowych();
+            konwersjaSystemowLiczbowych();
             break;
         case 7:
             czyszczeniePamieci();
@@ -143,6 +123,55 @@ public:
     void resztaZDzielenia(double a, double b) {
         mem = a - (int)(a / b) * b;
     };
+    void konwersjaSystemowLiczbowych() {
+        if (operacjaNaPamieci) {
+            int podstawa, liczba=static_cast<int>(mem);
+            std::cout << "podaj w jakim systemie liczbowym jest liczba z pamieci:";
+            std::cin >> podstawa;
+            if (podstawa > 0 && podstawa < 10)
+                konwersjaSystemowLiczbowychZOd1Do9Do10(podstawa, liczba);
+            std::cout << "podaj podstawe systemu liczbowego, na ktory ma byc przkonwertowana liczba:";
+            std::cin >> podstawa;
+            if (podstawa > 0 && podstawa < 10)
+                konwersjaSystemowLiczbowychZ10DoOd1Do9(podstawa, liczba);
+            mem = liczba;
+            std::cout << "wynik: " << mem << '\n';
+        }
+        else {
+            int podstawa, liczba;
+            std::cout << "podaj liczbe:";
+            std::cin >> liczba;
+            std::cout << "podaj w jakim systemie liczbowym jest ta liczba:";
+            std::cin >> podstawa;
+            if (podstawa > 0 && podstawa < 10)
+                konwersjaSystemowLiczbowychZOd1Do9Do10(podstawa, liczba);
+            std::cout << "podaj podstawe systemu liczbowego, na ktory ma byc przkonwertowana liczba:";
+            std::cin >> podstawa;
+            if (podstawa > 0 && podstawa < 10)
+                konwersjaSystemowLiczbowychZ10DoOd1Do9(podstawa, liczba);
+            mem = liczba;
+            std::cout << "wynik: " << mem << '\n';
+            czyWPamieciZnajdujeSieWartosc = true;
+        }
+    }
+    void konwersjaSystemowLiczbowychZOd1Do9Do10(int podstawa, int &liczba) {
+        int licznik = 1, wynik = 0;
+        while (liczba > 0) {
+            wynik += licznik * (liczba % 10);
+            licznik *= podstawa;
+            liczba = liczba / 10;
+        }
+        liczba = wynik;
+    }
+    void konwersjaSystemowLiczbowychZ10DoOd1Do9(int podstawa, int &liczba) {
+        int licznik = 1, wynik = 0;
+        while (liczba > 0) {
+            wynik += licznik * (liczba % podstawa);
+            licznik *= 10;
+            liczba = liczba / podstawa;
+        }
+        liczba = wynik;
+    }
     void czyszczeniePamieci() {
         czyWPamieciZnajdujeSieWartosc = false;
     };
