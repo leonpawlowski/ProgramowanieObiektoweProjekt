@@ -45,6 +45,10 @@ private slots:
     void on_rownaSie_clicked();
     void on_liczbaWSystemie10_textChanged(const QString &arg1);
 
+    void on_pamiecDoKonwertowania_clicked();
+
+    void on_dodajDoPamieci_clicked();
+
 private:
     Ui::MainWindow *ui;
 

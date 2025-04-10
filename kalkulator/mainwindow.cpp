@@ -94,6 +94,22 @@ void MainWindow::on_czyszczeniePamieci_clicked()
 {
     ui->wyswietlaczPamieci->clear();
 }
+void MainWindow::on_dodajDoPamieci_clicked()
+{
+    QString currentText=ui->wyswietlacz->text();
+    if(currentText!="" && ui->wyswietlaczOperacji->text()=="" && ui->wyswietlaczPierwszaLiczba->text()==""){
+        ui->wyswietlaczPamieci->setText(currentText);
+        ui->wyswietlacz->clear();
+    }
+}
+void MainWindow::on_pamiecDoKonwertowania_clicked()
+{
+    QString currentText=ui->wyswietlaczPamieci->text();
+    if(!(currentText=="")){
+        ui->liczbaWSystemie10->setText(currentText);
+    }
+}
+
 
 void MainWindow::obslugaLogiki(QString operacja){
     if(operacja=="+"){
@@ -195,7 +211,7 @@ void MainWindow::on_rownaSie_clicked()
 void MainWindow::on_liczbaWSystemie10_textChanged(const QString &arg1)
 {
     bool ok;
-    k1.liczba=arg1.toInt(&ok);
+    k1.liczba=arg1;
     ui->liczbaWSystemie2->setText(k1.konwersjaSystemowLiczbowychZ10Do2Do9(2,k1.liczba));
     ui->liczbaWSystemie3->setText(k1.konwersjaSystemowLiczbowychZ10Do2Do9(3,k1.liczba));
     ui->liczbaWSystemie4->setText(k1.konwersjaSystemowLiczbowychZ10Do2Do9(4,k1.liczba));
