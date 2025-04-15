@@ -29,15 +29,15 @@ void kalkulator::konwersjaSystemowLiczbowychZOd2Do9Do10(int podstawa, QString &l
             ++i;
         }
         bool ok;
-        int liczbaInt=liczba1.toInt(&ok);
-        int licznik=1, wynik=0;
+        long long liczbaInt=liczba1.toLongLong(&ok);
+        long long licznik=1, wynik=0;
         while (liczbaInt>0) {
             wynik+=licznik*(liczbaInt%10);
             licznik*=podstawa;
             liczbaInt=liczbaInt/10;
         }
         liczba=QString::number(wynik);
-        liczbaInt=liczba2.toInt(&ok);
+        liczbaInt=liczba2.toLongLong(&ok);
         licznik=1;
         wynik=0;
         while (liczbaInt>0) {
@@ -49,8 +49,8 @@ void kalkulator::konwersjaSystemowLiczbowychZOd2Do9Do10(int podstawa, QString &l
     }
     else{
         bool ok;
-        int liczbaInt=liczba.toInt(&ok);
-        int licznik=1, wynik=0;
+        long long liczbaInt=liczba.toLongLong(&ok);
+        long long licznik=1, wynik=0;
         while (liczbaInt>0) {
             wynik+=licznik*(liczbaInt%10);
             licznik*=podstawa;
@@ -73,13 +73,13 @@ QString kalkulator::konwersjaSystemowLiczbowychZ10Do2Do9(int podstawa, QString l
             ++i;
         }
         bool ok;
-        int liczbaInt=liczba1.toInt(&ok);
+        long long liczbaInt=liczba1.toLongLong(&ok);
         QString wynik="";
         while (liczbaInt>0){
             wynik=QString::number(liczbaInt%podstawa)+wynik;
             liczbaInt=liczbaInt/podstawa;
         }
-        liczbaInt=liczba2.toInt(&ok);
+        liczbaInt=liczba2.toLongLong(&ok);
         liczba=wynik+'.';
         wynik="";
         while (liczbaInt>0){
@@ -90,7 +90,7 @@ QString kalkulator::konwersjaSystemowLiczbowychZ10Do2Do9(int podstawa, QString l
     }
     else{
         bool ok;
-        int liczbaInt=liczba.toInt(&ok);
+        long long liczbaInt=liczba.toLongLong(&ok);
         liczba="";
         while (liczbaInt>0){
             liczba=QString::number(liczbaInt%podstawa)+liczba;
