@@ -368,6 +368,7 @@ C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/
  mdp:C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/filemanagerwindow.h
 C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/mainwindow.h
  mmc:Q_OBJECT
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/QObject
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/QStringList
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/q20functional.h
@@ -489,6 +490,7 @@ C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qtypeinfo.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qtypes.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qurl.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qutf8stringview.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qvariant.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/qvarlengtharray.h
@@ -521,8 +523,18 @@ C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/
  mdp:C:/Qt/6.8.3/mingw_64/include/QtGui/qvalidator.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/QAudioOutput
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/QMediaPlayer
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qaudio.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qaudiooutput.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qmediaplayer.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtaudio.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/QDialog
  mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow
+ mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/QSlider
  mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/QTreeWidgetItem
  mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h
  mdp:C:/Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemview.h
@@ -756,6 +768,7 @@ C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/
  mdp:C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/filemanager.h
  mdp:C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/filemanagerwindow.h
  mdp:C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/mainwindow.h
+ mdp:C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/player.h
 C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/player.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.3/mingw_64/include/QtCore/QObject

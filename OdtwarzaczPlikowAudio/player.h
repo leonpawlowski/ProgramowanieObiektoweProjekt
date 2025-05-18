@@ -12,14 +12,17 @@ class Player : QObject
     Q_OBJECT
 public:
     explicit Player(QObject *parent = nullptr);
+    ~Player();
 
     void play(const QString &filePath);
-    void setVolume(int volume);
-    void setProgressSlider(QSlider *slider);
+    void stop();
+    void pauseResume();
 
 
 private:
     QMediaPlayer *player;
+    QAudioOutput *audioOutput;
+
 };
 
 #endif // PLAYER_H

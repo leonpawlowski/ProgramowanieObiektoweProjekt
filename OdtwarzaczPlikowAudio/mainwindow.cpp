@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include "filemanagerwindow.h"
 #include "filemanager.h"
+#include "player.h"
 
 #include <QDir>
 #include <QFileInfoList>
@@ -16,14 +17,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     updateLibraryTreeWidget();
+
+    player = new Player(this);
 }
 
 MainWindow::~MainWindow()
 {
+    delete player;
     delete ui;
 }
 
-void MainWindow::updateLibraryTreeWidget(){
+void MainWindow::updateLibraryTreeWidget()
+{
     QStringList paths = fm.loadPaths();
     ui->libraryTreeWidget->clear();
     for(const QString &path : paths){
@@ -33,8 +38,8 @@ void MainWindow::updateLibraryTreeWidget(){
         addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(path, libraryItem);
     }
 }
-
-void MainWindow::addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(QString path, QTreeWidgetItem *libraryItem){
+void MainWindow::addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(const QString path, QTreeWidgetItem *libraryItem)
+{
     QDir directory(path);
     QStringList fileFilters;
     fileFilters << "*.mp3" << "*.wav" << "*.flac";
@@ -48,6 +53,7 @@ void MainWindow::addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(QSt
             QTreeWidgetItem *folderItem = new QTreeWidgetItem(libraryItem);
             folderItem->setText(0, directoryIterator.fileName());
             folderItem->setText(1, "Folder");
+            folderItem->setText(2, path);
             addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(path+"/"+directoryIterator.fileName(), folderItem);
         }
     }
@@ -56,13 +62,14 @@ void MainWindow::addingItemsFromPathToLibraryTreeWidgetAndAllSongsTreeWidget(QSt
         QTreeWidgetItem *fileItem = new QTreeWidgetItem(libraryItem);
         fileItem->setText(0, fileInfo.fileName());
         fileItem->setText(1, "File");
+        fileItem->setText(2, path);
         QTreeWidgetItem *allSongsFileItem = new QTreeWidgetItem(ui->allFilesTreeWidget);
         allSongsFileItem->setText(0, fileInfo.fileName());
         allSongsFileItem->setText(1, path);
     }
 }
-
-bool MainWindow::inDirectoryAreAudioFiles(const QString path, const QStringList &fileFilters){
+bool MainWindow::inDirectoryAreAudioFiles(const QString path, const QStringList &fileFilters)
+{
 
     QDir directory(path);
     QFileInfoList folderAudioFiles = directory.entryInfoList(fileFilters, QDir::Files);
@@ -86,4 +93,19 @@ void MainWindow::on_libraryEditButton_clicked()
     fmw->exec();
     updateLibraryTreeWidget();
 }
-
+void MainWindow::on_libraryTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    if(item->text(1)=="File"){
+        player->play(item->text(2)+"/"+item->text(0));
+        ui->currentPlayingFileLineEdit->setText(item->text(0));
+    }
+}
+void MainWindow::on_allFilesTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    player->play(item->text(1)+"/"+item->text(0));
+    ui->currentPlayingFileLineEdit->setText(item->text(0));
+}
+void MainWindow::on_pauseResumePushButton_clicked()
+{
+    player->pauseResume();
+}

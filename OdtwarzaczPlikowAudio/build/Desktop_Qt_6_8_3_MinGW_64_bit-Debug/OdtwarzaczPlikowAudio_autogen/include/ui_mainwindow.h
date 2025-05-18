@@ -59,9 +59,6 @@ public:
     QWidget *scrollAreaWidgetContents;
     QGridLayout *gridLayout_3;
     QListWidget *listWidget;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_5;
-    QLineEdit *lineEdit_2;
     QVBoxLayout *verticalLayout_5;
     QLabel *label;
     QScrollArea *fileInfoScrollArea;
@@ -100,12 +97,15 @@ public:
     QLabel *label_9;
     QSlider *verticalSlider;
     QPushButton *pushButton_5;
-    QSlider *fileProgressBarHorizontalSlider;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *currentPlayingFileLabel;
+    QLineEdit *currentPlayingFileLineEdit;
+    QSlider *audioProgressBarHorizontalSlider;
     QHBoxLayout *horizontalLayout_6;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_2;
+    QPushButton *previewFilePushButton;
+    QPushButton *pauseResumePushButton;
+    QPushButton *nextFilePushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -245,32 +245,6 @@ public:
 
         verticalLayout_3->addWidget(scrollArea);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_5 = new QLabel(centralwidget);
-        label_5->setObjectName("label_5");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_4->addWidget(label_5);
-
-        lineEdit_2 = new QLineEdit(centralwidget);
-        lineEdit_2->setObjectName("lineEdit_2");
-        QSizePolicy sizePolicy4(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy4);
-        lineEdit_2->setReadOnly(true);
-
-        horizontalLayout_4->addWidget(lineEdit_2);
-
-
-        verticalLayout_3->addLayout(horizontalLayout_4);
-
 
         horizontalLayout_13->addLayout(verticalLayout_3);
 
@@ -296,6 +270,9 @@ public:
         horizontalLayout_7->setObjectName("horizontalLayout_7");
         label_2 = new QLabel(scrollAreaWidgetContents_2);
         label_2->setObjectName("label_2");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy3);
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -459,7 +436,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 157, 124));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 147, 124));
         verticalLayout_6 = new QVBoxLayout(scrollAreaWidgetContents_3);
         verticalLayout_6->setObjectName("verticalLayout_6");
         checkBox = new QCheckBox(scrollAreaWidgetContents_3);
@@ -509,11 +486,11 @@ public:
 
         verticalSlider = new QSlider(centralwidget);
         verticalSlider->setObjectName("verticalSlider");
-        QSizePolicy sizePolicy5(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(verticalSlider->sizePolicy().hasHeightForWidth());
-        verticalSlider->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(verticalSlider->sizePolicy().hasHeightForWidth());
+        verticalSlider->setSizePolicy(sizePolicy4);
         verticalSlider->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         verticalSlider->setSliderPosition(49);
         verticalSlider->setTracking(true);
@@ -534,41 +511,64 @@ public:
 
         verticalLayout_7->addLayout(horizontalLayout_13);
 
-        fileProgressBarHorizontalSlider = new QSlider(centralwidget);
-        fileProgressBarHorizontalSlider->setObjectName("fileProgressBarHorizontalSlider");
-        sizePolicy1.setHeightForWidth(fileProgressBarHorizontalSlider->sizePolicy().hasHeightForWidth());
-        fileProgressBarHorizontalSlider->setSizePolicy(sizePolicy1);
-        fileProgressBarHorizontalSlider->setOrientation(Qt::Orientation::Horizontal);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        currentPlayingFileLabel = new QLabel(centralwidget);
+        currentPlayingFileLabel->setObjectName("currentPlayingFileLabel");
+        QSizePolicy sizePolicy5(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(currentPlayingFileLabel->sizePolicy().hasHeightForWidth());
+        currentPlayingFileLabel->setSizePolicy(sizePolicy5);
 
-        verticalLayout_7->addWidget(fileProgressBarHorizontalSlider);
+        horizontalLayout_4->addWidget(currentPlayingFileLabel);
+
+        currentPlayingFileLineEdit = new QLineEdit(centralwidget);
+        currentPlayingFileLineEdit->setObjectName("currentPlayingFileLineEdit");
+        QSizePolicy sizePolicy6(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(currentPlayingFileLineEdit->sizePolicy().hasHeightForWidth());
+        currentPlayingFileLineEdit->setSizePolicy(sizePolicy6);
+        currentPlayingFileLineEdit->setReadOnly(true);
+
+        horizontalLayout_4->addWidget(currentPlayingFileLineEdit);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_4);
+
+        audioProgressBarHorizontalSlider = new QSlider(centralwidget);
+        audioProgressBarHorizontalSlider->setObjectName("audioProgressBarHorizontalSlider");
+        sizePolicy1.setHeightForWidth(audioProgressBarHorizontalSlider->sizePolicy().hasHeightForWidth());
+        audioProgressBarHorizontalSlider->setSizePolicy(sizePolicy1);
+        audioProgressBarHorizontalSlider->setOrientation(Qt::Orientation::Horizontal);
+
+        verticalLayout_7->addWidget(audioProgressBarHorizontalSlider);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName("horizontalLayout_6");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        QSizePolicy sizePolicy6(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy6);
+        previewFilePushButton = new QPushButton(centralwidget);
+        previewFilePushButton->setObjectName("previewFilePushButton");
+        sizePolicy5.setHeightForWidth(previewFilePushButton->sizePolicy().hasHeightForWidth());
+        previewFilePushButton->setSizePolicy(sizePolicy5);
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(previewFilePushButton);
 
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        sizePolicy6.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy6);
+        pauseResumePushButton = new QPushButton(centralwidget);
+        pauseResumePushButton->setObjectName("pauseResumePushButton");
+        sizePolicy5.setHeightForWidth(pauseResumePushButton->sizePolicy().hasHeightForWidth());
+        pauseResumePushButton->setSizePolicy(sizePolicy5);
 
-        horizontalLayout->addWidget(pushButton_3);
+        horizontalLayout->addWidget(pauseResumePushButton);
 
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        sizePolicy6.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy6);
+        nextFilePushButton = new QPushButton(centralwidget);
+        nextFilePushButton->setObjectName("nextFilePushButton");
+        sizePolicy5.setHeightForWidth(nextFilePushButton->sizePolicy().hasHeightForWidth());
+        nextFilePushButton->setSizePolicy(sizePolicy5);
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(nextFilePushButton);
 
 
         horizontalLayout_6->addLayout(horizontalLayout);
@@ -599,9 +599,9 @@ public:
         librarySortButton->setText(QCoreApplication::translate("MainWindow", "sort", nullptr));
         libraryEditButton->setText(QCoreApplication::translate("MainWindow", "edit", nullptr));
         QTreeWidgetItem *___qtreewidgetitem = libraryTreeWidget->headerItem();
-        ___qtreewidgetitem->setText(2, QCoreApplication::translate("MainWindow", "Length", nullptr));
+        ___qtreewidgetitem->setText(2, QCoreApplication::translate("MainWindow", "Path", nullptr));
         ___qtreewidgetitem->setText(1, QCoreApplication::translate("MainWindow", "Type", nullptr));
-        ___qtreewidgetitem->setText(0, QCoreApplication::translate("MainWindow", "Path", nullptr));
+        ___qtreewidgetitem->setText(0, QCoreApplication::translate("MainWindow", "Name", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Library), QCoreApplication::translate("MainWindow", "Library", nullptr));
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "sort", nullptr));
         QTreeWidgetItem *___qtreewidgetitem1 = allFilesTreeWidget->headerItem();
@@ -610,7 +610,6 @@ public:
         ___qtreewidgetitem1->setText(0, QCoreApplication::translate("MainWindow", "Name", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(allSongs), QCoreApplication::translate("MainWindow", "All Files", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "queve", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Now Playing:", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "File Info", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Name:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Album:", nullptr));
@@ -626,9 +625,10 @@ public:
         checkBox_4->setText(QCoreApplication::translate("MainWindow", "zapetlenie utworu", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "Volume", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "output", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "play/stop", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
+        currentPlayingFileLabel->setText(QCoreApplication::translate("MainWindow", "Now Playing:", nullptr));
+        previewFilePushButton->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
+        pauseResumePushButton->setText(QCoreApplication::translate("MainWindow", "play/pause", nullptr));
+        nextFilePushButton->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
     } // retranslateUi
 
 };

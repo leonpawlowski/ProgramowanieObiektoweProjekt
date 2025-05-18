@@ -1,5 +1,6 @@
 C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/OdtwarzaczPlikowAudio_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/mainwindow.h \
   C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/OdtwarzaczPlikowAudio_autogen/moc_predefs.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/QObject \
   C:/Qt/6.8.3/mingw_64/include/QtCore/QString \
   C:/Qt/6.8.3/mingw_64/include/QtCore/QStringList \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
@@ -121,6 +122,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/qurl.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qvariant.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qvarlengtharray.h \
@@ -153,8 +155,18 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtGui/qvalidator.h \
   C:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.8.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/QAudioOutput \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/QMediaPlayer \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qaudio.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qaudiooutput.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtaudio.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+  C:/Qt/6.8.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
   C:/Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
   C:/Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.8.3/mingw_64/include/QtWidgets/QSlider \
   C:/Qt/6.8.3/mingw_64/include/QtWidgets/QTreeWidgetItem \
   C:/Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemview.h \
@@ -385,4 +397,5 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/filemanager.h \
-  C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/filemanagerwindow.h
+  C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/filemanagerwindow.h \
+  C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/player.h
