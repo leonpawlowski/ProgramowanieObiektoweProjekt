@@ -375,6 +375,12 @@
 			"MU",
 			"EWIEGA46WW/moc_player.cpp",
 			null
+		],
+		[
+			"C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/playerqueve.h",
+			"MU",
+			"EWIEGA46WW/moc_playerqueve.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -474,6 +480,11 @@
 		],
 		[
 			"C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/player.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/mati8/Desktop/Studia/2 Semestr/programowanie obiektowe/Projekt koncowy/OdtwarzaczPlikowAudio/playerqueve.cpp",
 			"MU",
 			null
 		]

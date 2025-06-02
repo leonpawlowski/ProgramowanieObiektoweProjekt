@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../../mainwindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -45,7 +46,14 @@ static constexpr auto qt_meta_stringdata_ZN10MainWindowE = QtMocHelpers::stringD
     "item",
     "column",
     "on_allFilesTreeWidget_itemDoubleClicked",
-    "on_pauseResumePushButton_clicked"
+    "on_pauseResumePushButton_clicked",
+    "on_libraryTreeWidget_itemClicked",
+    "on_allFilesTreeWidget_itemClicked",
+    "on_nextFilePushButton_clicked",
+    "on_previousFilePushButton_clicked",
+    "on_queveListWidget_itemDoubleClicked",
+    "QListWidgetItem*",
+    "on_queveListWidget_itemClicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -57,7 +65,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10MainWindowE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,16 +73,28 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10MainWindowE[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   38,    2, 0x08,    1 /* Private */,
-       3,    2,   39,    2, 0x08,    2 /* Private */,
-       7,    2,   44,    2, 0x08,    5 /* Private */,
-       8,    0,   49,    2, 0x08,    8 /* Private */,
+       1,    0,   74,    2, 0x08,    1 /* Private */,
+       3,    2,   75,    2, 0x08,    2 /* Private */,
+       7,    2,   80,    2, 0x08,    5 /* Private */,
+       8,    0,   85,    2, 0x08,    8 /* Private */,
+       9,    2,   86,    2, 0x08,    9 /* Private */,
+      10,    2,   91,    2, 0x08,   12 /* Private */,
+      11,    0,   96,    2, 0x08,   15 /* Private */,
+      12,    0,   97,    2, 0x08,   16 /* Private */,
+      13,    1,   98,    2, 0x08,   17 /* Private */,
+      15,    1,  101,    2, 0x08,   19 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 4, QMetaType::Int,    5,    6,
     QMetaType::Void, 0x80000000 | 4, QMetaType::Int,    5,    6,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 4, QMetaType::Int,    5,    6,
+    QMetaType::Void, 0x80000000 | 4, QMetaType::Int,    5,    6,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 14,    5,
+    QMetaType::Void, 0x80000000 | 14,    5,
 
        0        // eod
 };
@@ -99,7 +119,25 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QTreeWidgetItem *, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'on_pauseResumePushButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_libraryTreeWidget_itemClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTreeWidgetItem *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_allFilesTreeWidget_itemClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTreeWidgetItem *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_nextFilePushButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_previousFilePushButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_queveListWidget_itemDoubleClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>,
+        // method 'on_queveListWidget_itemClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>
     >,
     nullptr
 } };
@@ -113,6 +151,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_libraryTreeWidget_itemDoubleClicked((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 2: _t->on_allFilesTreeWidget_itemDoubleClicked((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 3: _t->on_pauseResumePushButton_clicked(); break;
+        case 4: _t->on_libraryTreeWidget_itemClicked((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 5: _t->on_allFilesTreeWidget_itemClicked((*reinterpret_cast< std::add_pointer_t<QTreeWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 6: _t->on_nextFilePushButton_clicked(); break;
+        case 7: _t->on_previousFilePushButton_clicked(); break;
+        case 8: _t->on_queveListWidget_itemDoubleClicked((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 9: _t->on_queveListWidget_itemClicked((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
         default: ;
         }
     }
@@ -137,14 +181,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 10;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 10;
     }
     return _id;
 }

@@ -23,7 +23,7 @@ private slots:
     void on_removePath_clicked();
 
 private:
-    FileManager fm; 
+    FileManager fm;
     Ui::FileManagerWindow *ui;
 };
 

@@ -27,6 +27,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         filemanager.h filemanager.cpp
         filemanagerwindow.h filemanagerwindow.cpp filemanagerwindow.ui
         player.h player.cpp
+        playerqueve.h playerqueve.cpp
 
 
 
