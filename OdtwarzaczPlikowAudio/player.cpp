@@ -1,6 +1,8 @@
 #include "player.h"
 #include <QUrl>
 #include <QFileInfo>
+#include <QMessageBox>
+#include <QTimer>
 
 Player::Player(QLineEdit *lineEdit, QObject *parent) : QObject(parent)
 {
@@ -21,7 +23,12 @@ void Player::play(const QString filePath)
     QFileInfo currentFile(filePath);
     currentPlayingFileLineEdit->setText(currentFile.fileName());
     mediaPlayer->setSource(QUrl::fromLocalFile(filePath));
+    mediaPlayer->setPosition(0);
     mediaPlayer->play();
+
+    playRetryTimer.setInterval(50);
+    playRetryTimer.setSingleShot(false);
+    playRetryTimer.start();
 }
 
 void Player::stop()
@@ -74,6 +81,24 @@ void Player::configPlayer(QSlider *progressSlider, QSlider *volumeSlider, QLabel
     connect(volumeSlider, &QSlider::valueChanged, this, [this, volumeLabel](int volume){
         audioOutput->setVolume(static_cast<float>(volume)/100.0);
         volumeLabel->setText("Volume " + QString::number(volume) + "%");
+    });
+
+    connect(&playRetryTimer, &QTimer::timeout, this, [this, progressLabel](){
+        if(mediaPlayer->playbackState() == QMediaPlayer::PlayingState)
+        {
+            if(progressLabel->text() == "0:0")
+            {
+                mediaPlayer->setPosition(0);
+                mediaPlayer->play();
+            }
+            playRetryTimer.stop();
+        }
+        else if(mediaPlayer->mediaStatus() == QMediaPlayer::LoadedMedia || mediaPlayer->mediaStatus() == QMediaPlayer::BufferedMedia)
+        {
+            mediaPlayer->setPosition(0);
+            mediaPlayer->play();
+            playRetryTimer.stop();
+        }
     });
 }
 

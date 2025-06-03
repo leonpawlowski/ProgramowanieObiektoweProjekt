@@ -79,14 +79,12 @@ void MainWindow::on_libraryEditButton_clicked()
 void MainWindow::on_libraryTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if(item->text(1)=="File"){
-        ui->currentPlayingFileLineEdit->setText(item->text(0));
         playerQueve->updatePlayerQueve(item->text(2), item->text(2) + "/" + item->text(0));
         player->play(item->text(2) + "/" + item->text(0));
     }
 }
 void MainWindow::on_allFilesTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-    ui->currentPlayingFileLineEdit->setText(item->text(0));
     playerQueve->updatePlayerQueveAllFiles(fm->getPathsToAllFiles(), item->text(1) + "/" + item->text(0));
     player->play(item->text(1) + "/" + item->text(0));
 }

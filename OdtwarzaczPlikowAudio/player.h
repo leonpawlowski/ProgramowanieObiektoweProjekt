@@ -7,6 +7,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QLineEdit>
+#include <QTimer>
 
 class Player : QObject
 {
@@ -32,6 +33,7 @@ private:
     QAudioOutput *audioOutput;
     bool userIsMovingSlider = false;
     QLineEdit *currentPlayingFileLineEdit;
+    QTimer playRetryTimer;
 
 };
 

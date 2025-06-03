@@ -47,7 +47,7 @@ void PlayerQueve::updatePlayerQueve(QString path, QString filePath)
     for(int i=0;i<currentQueve.size();++i)
         queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
 
-    queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+    queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
 }
 
 void PlayerQueve::updatePlayerQueveAllFiles(QFileInfoList allFiles, QString filePath)
@@ -66,7 +66,7 @@ void PlayerQueve::updatePlayerQueveAllFiles(QFileInfoList allFiles, QString file
     for(int i=0;i<currentQueve.size();++i)
         queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
 
-    queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+    queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
 }
 
 void PlayerQueve::handle()
@@ -102,7 +102,7 @@ void PlayerQueve::handle()
 
     }
 
-    queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+    queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
 }
 
 void PlayerQueve::playNextFile()
@@ -129,7 +129,7 @@ void PlayerQueve::playNextFile()
             player->play(currentQueve.at(currentFileIndex).filePath());
         }
 
-        queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+        queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
     }
 }
 
@@ -157,7 +157,7 @@ void PlayerQueve::playPreviousFile()
             player->play(currentQueve.at(currentFileIndex).filePath());
         }
 
-        queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+        queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
     }
 }
 
@@ -171,7 +171,7 @@ void PlayerQueve::playSelectedPositionInQueve(int index)
         fm->updateFileInfo(currentQueve.at(currentFileIndex).filePath(), lineEdits);
         player->play(currentQueve.at(currentFileIndex).filePath());
 
-        queveList->item(currentFileIndex)->setForeground(QBrush(Qt::green));
+        queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
     }
 }
 

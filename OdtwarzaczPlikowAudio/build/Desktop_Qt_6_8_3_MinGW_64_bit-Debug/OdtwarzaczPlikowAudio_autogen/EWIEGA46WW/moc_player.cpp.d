@@ -1,6 +1,7 @@
 C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/OdtwarzaczPlikowAudio_autogen/EWIEGA46WW/moc_player.cpp: C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/player.h \
   C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ koncowy/OdtwarzaczPlikowAudio/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/OdtwarzaczPlikowAudio_autogen/moc_predefs.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20iterator.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
@@ -16,6 +17,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/qatomic.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qatomic_cxx11.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/qbasictimer.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbindingstorage.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -107,6 +109,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \

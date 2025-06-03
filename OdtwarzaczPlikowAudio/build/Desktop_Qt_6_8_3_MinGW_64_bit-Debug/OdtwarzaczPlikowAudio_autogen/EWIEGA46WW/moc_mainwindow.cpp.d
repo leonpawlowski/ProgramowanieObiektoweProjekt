@@ -5,6 +5,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/QObject \
   C:/Qt/6.8.3/mingw_64/include/QtCore/QString \
   C:/Qt/6.8.3/mingw_64/include/QtCore/QStringList \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20iterator.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
@@ -21,6 +22,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/qatomic.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qatomic_cxx11.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/qbasictimer.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbindingstorage.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -120,6 +122,7 @@ C:/Users/mati8/Desktop/Studia/2\ Semestr/programowanie\ obiektowe/Projekt\ konco
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.8.3/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtimezone.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.8.3/mingw_64/include/QtCore/qtnoop.h \
