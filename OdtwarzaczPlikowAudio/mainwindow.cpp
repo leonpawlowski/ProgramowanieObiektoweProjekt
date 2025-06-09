@@ -11,14 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QLineEdit *lineEdits[7];
+    QLineEdit *lineEdits[5];
     lineEdits[0] = ui->fileNameLinEdit;
-    lineEdits[1] = ui->fileAlbumLineEdit;
-    lineEdits[2] = ui->fileAutorLineEdit;
-    lineEdits[3] = ui->fileDurationLineEdit;
-    lineEdits[4] = ui->fileTypeLineEdit;
-    lineEdits[5] = ui->fileSizeLineEdit;
-    lineEdits[6] = ui->filePathLineEdit;
+    lineEdits[1] = ui->fileDurationLineEdit;
+    lineEdits[2] = ui->fileTypeLineEdit;
+    lineEdits[3] = ui->fileSizeLineEdit;
+    lineEdits[4] = ui->filePathLineEdit;
 
     fm = new FileManager("paths.txt");
     updateLibrary();
@@ -28,6 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     playerQueve = new PlayerQueve(lineEdits, fm, player, ui->queveListWidget);
     playerQueve->configPlayerQueve(ui->autoPlayCheckBox, ui->shufflePlayCheckBox, ui->loopQueveCheckBox, ui->loopFileCheckBox);
+
+    QFont font = ui->volumeLabel->font();
+    QFontMetrics fontMetrics(font);
+    ui->volumeLabel->setMinimumWidth(fontMetrics.horizontalAdvance(ui->volumeLabel->text()));
 }
 
 MainWindow::~MainWindow()
@@ -51,14 +53,12 @@ void MainWindow::updateLibrary()
 }
 void MainWindow::updateFileInfo(QString path)
 {
-    QLineEdit *lineEdits[7];
+    QLineEdit *lineEdits[5];
     lineEdits[0] = ui->fileNameLinEdit;
-    lineEdits[1] = ui->fileAlbumLineEdit;
-    lineEdits[2] = ui->fileAutorLineEdit;
-    lineEdits[3] = ui->fileDurationLineEdit;
-    lineEdits[4] = ui->fileTypeLineEdit;
-    lineEdits[5] = ui->fileSizeLineEdit;
-    lineEdits[6] = ui->filePathLineEdit;
+    lineEdits[1] = ui->fileDurationLineEdit;
+    lineEdits[2] = ui->fileTypeLineEdit;
+    lineEdits[3] = ui->fileSizeLineEdit;
+    lineEdits[4] = ui->filePathLineEdit;
     fm->updateFileInfo(path, lineEdits);
 }
 void MainWindow::updateQueve(QString path, QString filePath)
@@ -85,7 +85,7 @@ void MainWindow::on_libraryTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, i
 }
 void MainWindow::on_allFilesTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-    playerQueve->updatePlayerQueveAllFiles(fm->getPathsToAllFiles(), item->text(1) + "/" + item->text(0));
+    playerQueve->updatePlayerQueve(fm->getPathsToAllFiles(), item->text(1) + "/" + item->text(0));
     player->play(item->text(1) + "/" + item->text(0));
 }
 void MainWindow::on_pauseResumePushButton_clicked()
@@ -118,5 +118,14 @@ void MainWindow::on_queveListWidget_itemDoubleClicked(QListWidgetItem *item)
 void MainWindow::on_queveListWidget_itemClicked(QListWidgetItem *item)
 {
     updateFileInfo(playerQueve->getFileInfoOfSelectedItemInQueve(ui->queveListWidget->currentRow()).absoluteFilePath());
+}
+void MainWindow::on_rewind10Sec_clicked()
+{
+    player->changePositionRelativeToCurrent(-10000);
+}
+
+void MainWindow::on_fastForward10Sec_clicked()
+{
+    player->changePositionRelativeToCurrent(10000);
 }
 

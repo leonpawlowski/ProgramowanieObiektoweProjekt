@@ -59,14 +59,14 @@ void FileManager::updateFileInfo(const QString &path, QLineEdit *lineEdits[])
 {
     QFileInfo fileInfo(path);
     lineEdits[0]->setText(fileInfo.fileName());
-    lineEdits[4]->setText(fileInfo.suffix());
-    lineEdits[6]->setText(fileInfo.absoluteFilePath());
+    lineEdits[2]->setText(fileInfo.suffix());
+    lineEdits[4]->setText(fileInfo.absoluteFilePath());
 
     qint64 size = fileInfo.size();
     if((size/1000)%100<10)
-        lineEdits[5]->setText(QString::number(size/1000000) + ".0" + QString::number((size/1000)%100) + "MB");
+        lineEdits[3]->setText(QString::number(size/1000000) + ".0" + QString::number((size/1000)%100) + "MB");
     else
-        lineEdits[5]->setText(QString::number(size/1000000) + "." + QString::number((size/1000)%100) + "MB");
+        lineEdits[3]->setText(QString::number(size/1000000) + "." + QString::number((size/1000)%100) + "MB");
 
     QMediaPlayer player1;
     player1.setSource(QUrl::fromLocalFile(path));
@@ -78,20 +78,13 @@ void FileManager::updateFileInfo(const QString &path, QLineEdit *lineEdits[])
 
     qint64 duration=player1.duration();
     if((duration/1000)%60<10)
-        lineEdits[3]->setText(QString::number(duration/60000) + ":0" + QString::number((duration/1000)%60));
+        lineEdits[1]->setText(QString::number(duration/60000) + ":0" + QString::number((duration/1000)%60));
     else
-        lineEdits[3]->setText(QString::number(duration/60000) + ":" + QString::number((duration/1000)%60));
-
-    QVariant album = player1.metaData().stringValue(QMediaMetaData::AlbumArtist);
-    QVariant author = player1.metaData().stringValue(QMediaMetaData::Author);
-    if(album.isValid())
-        lineEdits[1]->setText(album.toString());
-    if(author.isValid())
-        lineEdits[2]->setText(author.toString());
+        lineEdits[1]->setText(QString::number(duration/60000) + ":" + QString::number((duration/1000)%60));
 
     player1.stop();
 
-    for(int i = 0; i < 7; ++i)
+    for(int i = 0; i < 5; ++i)
     {
         lineEdits[i]->setCursorPosition(0);
         lineEdits[i]->setMinimumWidth(QFontMetrics(lineEdits[i]->font()).horizontalAdvance(lineEdits[i]->text()) + 30);

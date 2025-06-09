@@ -20,15 +20,16 @@ Player::~Player()
 
 void Player::play(const QString filePath)
 {
-    QFileInfo currentFile(filePath);
-    currentPlayingFileLineEdit->setText(currentFile.fileName());
     mediaPlayer->setSource(QUrl::fromLocalFile(filePath));
     mediaPlayer->setPosition(0);
     mediaPlayer->play();
 
-    playRetryTimer.setInterval(50);
+    playRetryTimer.setInterval(10);
     playRetryTimer.setSingleShot(false);
     playRetryTimer.start();
+
+    QFileInfo currentFile(filePath);
+    currentPlayingFileLineEdit->setText(currentFile.fileName());
 }
 
 void Player::stop()
@@ -86,7 +87,7 @@ void Player::configPlayer(QSlider *progressSlider, QSlider *volumeSlider, QLabel
     connect(&playRetryTimer, &QTimer::timeout, this, [this, progressLabel](){
         if(mediaPlayer->playbackState() == QMediaPlayer::PlayingState)
         {
-            if(progressLabel->text() == "0:0")
+            if(progressLabel->text() == "0:0" || progressLabel->text() == "0:00")
             {
                 mediaPlayer->setPosition(0);
                 mediaPlayer->play();
@@ -100,6 +101,17 @@ void Player::configPlayer(QSlider *progressSlider, QSlider *volumeSlider, QLabel
             playRetryTimer.stop();
         }
     });
+}
+
+void Player::changePositionRelativeToCurrent(int change)
+{
+    int currentPosition = mediaPlayer->position();
+    if(currentPosition + change <= mediaPlayer->duration() && currentPosition + change >= 0)
+        mediaPlayer->setPosition(mediaPlayer->position() + change);
+    else if(currentPosition + change > mediaPlayer->duration())
+        mediaPlayer->setPosition(mediaPlayer->duration());
+    else if(currentPosition + change < 0)
+        mediaPlayer->setPosition(0);
 }
 
 QMediaPlayer* Player::getMediaPlayer(){

@@ -17,7 +17,9 @@ public:
 
     void configPlayerQueve(QCheckBox *autoPlayCheckBox, QCheckBox *shufflePlayCheckBox, QCheckBox *loopQueveCheckBox, QCheckBox *loopFileCheckBox);
     void updatePlayerQueve(QString path, QString filePath);
-    void updatePlayerQueveAllFiles(QFileInfoList allFiles, QString filePath);
+    void updatePlayerQueve(QFileInfoList allFiles, QString filePath);
+    void randomizeQueve();
+    void changeQueveToShuffleOrToNormal();
     void playNextFile();
     void playPreviousFile();
     void playSelectedPositionInQueve(int index);
@@ -29,6 +31,7 @@ private:
     QString path = "";
     QListWidget *queveList;
     QFileInfoList currentQueve;
+    QFileInfoList currentQueveCopy;
     int currentFileIndex;
     bool autoPlay = false;
     bool shufflePlay = false;

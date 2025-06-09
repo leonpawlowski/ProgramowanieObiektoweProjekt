@@ -39,6 +39,10 @@ private slots:
 
     void on_queveListWidget_itemClicked(QListWidgetItem *item);
 
+    void on_rewind10Sec_clicked();
+
+    void on_fastForward10Sec_clicked();
+
 private:
     void updateLibrary();
     void updateFileInfo(QString path);

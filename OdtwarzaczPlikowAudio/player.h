@@ -20,9 +20,8 @@ public:
     void play(const QString filePath);
     void stop();
     void pauseResume();
-    int durationInMiliSeconds();
-    int currentPositionInMiliSeconds();
     void configPlayer(QSlider *progressSlider, QSlider *volumeSlider, QLabel *progressLabel, QLabel *durationLabel, QLabel *volumeLabel);
+    void changePositionRelativeToCurrent(int change);
     QMediaPlayer* getMediaPlayer();
 
 private slots:

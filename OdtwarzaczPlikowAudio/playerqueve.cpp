@@ -18,6 +18,8 @@ void PlayerQueve::configPlayerQueve(QCheckBox *autoPlayCheckBox, QCheckBox *shuf
     });
     QObject::connect(shufflePlayCheckBox, &QCheckBox::checkStateChanged, [this](Qt::CheckState state){
         shufflePlay = (state == Qt::Checked);
+        if(!currentQueve.isEmpty())
+            changeQueveToShuffleOrToNormal();
     });
     QObject::connect(loopQueveCheckBox, &QCheckBox::checkStateChanged, [this](Qt::CheckState state){
         loopQueve = (state == Qt::Checked);
@@ -34,36 +36,114 @@ void PlayerQueve::configPlayerQueve(QCheckBox *autoPlayCheckBox, QCheckBox *shuf
 void PlayerQueve::updatePlayerQueve(QString path, QString filePath)
 {
     currentQueve = fm->getPathsToFilesInDirectory(path);
-    currentFileIndex = -1;
-    for(int i = 0; i < currentQueve.size(); ++i)
+    if(!currentQueve.isEmpty())
     {
-        if(currentQueve.at(i).filePath() == filePath)
+        currentFileIndex = -1;
+        for(int i = 0; i < currentQueve.size(); ++i)
         {
-            currentFileIndex = i;
-            break;
+            if(currentQueve.at(i).filePath() == filePath)
+            {
+                currentFileIndex = i;
+                break;
+            }
         }
-    }
-    queveList->clear();
-    for(int i=0;i<currentQueve.size();++i)
-        queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
 
-    queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
+        if(shufflePlay)
+        {
+            randomizeQueve();
+        }
+
+        queveList->clear();
+        for(int i = 0; i < currentQueve.size(); ++i)
+            queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
+
+        queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
+    }
 }
 
-void PlayerQueve::updatePlayerQueveAllFiles(QFileInfoList allFiles, QString filePath)
+void PlayerQueve::updatePlayerQueve(QFileInfoList allFiles, QString filePath)
 {
     currentQueve = allFiles;
-    currentFileIndex = -1;
-    for(int i = 0; i < currentQueve.size(); ++i)
+    if(!currentQueve.isEmpty())
     {
-        if(currentQueve.at(i).filePath() == filePath)
+        currentFileIndex = -1;
+        for(int i = 0; i < currentQueve.size(); ++i)
         {
-            currentFileIndex = i;
-            break;
+            if(currentQueve.at(i).filePath() == filePath)
+            {
+                currentFileIndex = i;
+                break;
+            }
+        }
+
+        if(shufflePlay)
+        {
+            randomizeQueve();
+        }
+
+        queveList->clear();
+        for(int i = 0; i < currentQueve.size(); ++i)
+            queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
+
+        queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
+    }
+}
+
+void PlayerQueve::randomizeQueve()
+{
+    currentQueveCopy = currentQueve;
+    currentQueve[0] = currentQueveCopy[currentFileIndex];
+
+    int tabLength = currentQueve.size();
+    int alreadyUsedIndexes[tabLength];
+    alreadyUsedIndexes[0] = currentFileIndex;
+    int currentTabIndex = 1;
+
+    srand(time(NULL));
+
+    while(currentTabIndex < tabLength)
+    {
+        bool newIndex = true;
+        int randomIndex = rand()%tabLength;
+
+        for(int i=0;i<currentTabIndex;++i)
+        {
+            if(randomIndex == alreadyUsedIndexes[i])
+                newIndex = false;
+        }
+
+        if(newIndex)
+        {
+            alreadyUsedIndexes[currentTabIndex] = randomIndex;
+            currentQueve[currentTabIndex] = currentQueveCopy[randomIndex];
+            ++currentTabIndex;
         }
     }
+    currentFileIndex = 0;
+}
+
+void PlayerQueve::changeQueveToShuffleOrToNormal()
+{
+    if(shufflePlay)
+    {
+        queveList->item(currentFileIndex)->setForeground(QBrush(Qt::white));
+        randomizeQueve();
+    }
+    else
+    {
+        queveList->item(currentFileIndex)->setForeground(QBrush(Qt::white));
+        for(int i = 0; i < currentQueve.size(); ++i)
+        {
+            if(currentQueveCopy.at(i) == currentQueve.at(currentFileIndex))
+            {
+                currentFileIndex = i;
+                break;
+            }
+        }
+        currentQueve = currentQueveCopy;
+    }
     queveList->clear();
-    for(int i=0;i<currentQueve.size();++i)
+    for(int i = 0; i < currentQueve.size(); ++i)
         queveList->addItem(QString::number(i+1) + ". " + currentQueve.at(i).fileName());
 
     queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
@@ -96,10 +176,6 @@ void PlayerQueve::handle()
             fm->updateFileInfo(currentQueve.at(currentFileIndex).filePath(), lineEdits);
             player->play(currentQueve.at(currentFileIndex).filePath());
         }
-    }
-    else
-    {
-
     }
 
     queveList->item(currentFileIndex)->setForeground(QBrush(QColor(0,204,255)));
